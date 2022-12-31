@@ -53,3 +53,39 @@ When we run the program, we get an output in the terminal like,
 ```
 20:35:00.335 [main] INFO org.ulearnuhelp.observability.App - This is an info level log message!
 ```
+
+### Log Configuration
+---
+
+Using a logback.xml file (available in classpath) - we can configure the logging line. 
+The following configuration logs to, 
+
+- Standard Output 
+- Level - DEBUG - that means INFO etc will be automatically printed
+- Pattern (Details explanation https://logback.qos.ch/manual/layouts.html) 
+
+%d{HH:mm:ss.SSS} - date format 
+%thread - the java thread name
+%-5level - The log level within 5 characters
+%logger{36} - The logger name within 36 character
+
+ ```
+<configuration>
+
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <!-- encoders are assigned the type
+         ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} -%kvp- %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <root level="debug">
+    <appender-ref ref="STDOUT" />
+  </root>
+</configuration>
+```
+
+### JSON Output
+---
+
