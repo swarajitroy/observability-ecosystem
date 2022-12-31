@@ -1,4 +1,4 @@
 
-# H1 Data Types for Observability
+# Data Types for Observability
 ---
 
