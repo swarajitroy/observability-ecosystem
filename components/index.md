@@ -88,4 +88,6 @@ The following configuration logs to,
 
 ### JSON Output
 ---
-
+java -Dlogback.configurationFile=/path/to/config.xml <Your Main Class/ Exe. JAR>
+Or,
+System.setProperty("logback.configurationFile", "/path/to/config.xml");
