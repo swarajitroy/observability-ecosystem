@@ -13,10 +13,10 @@ If you are in Java - one of the best way to start with **Simple Logging Facade f
 ### Import SLF4J (Maven)
 ---
 
-`
+```
 <dependency>
     <groupId>org.slf4j</groupId>
     <artifactId>slf4j-api</artifactId>
     <version>2.0.6</version>
 </dependency>
-`
+```
