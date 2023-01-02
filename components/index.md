@@ -138,7 +138,15 @@ Design the JSON log configuration file,
 
 ```
 
-PS C:\swararoy\swararoy-2023\05. Code\observability-ecosystem>  c:; cd 'c:\swararoy\swararoy-2023\05. Code\observability-ecosystem'; & 'C:\swararoy\install_home\java11\bin\java.exe' '@C:\Users\SWARAJ~1\AppData\Local\Temp\cp_17foks3umv1p7q47rvh3xme3p.argfile' '-Dlogback.configurationFile=C:\\swararoy\\swararoy-2023\\logback.xml'  'org.ulearnuhelp.observability.App'         
+Pass the configuration file as a JVM parameter, 
+
+```
+PS C:\swararoy\swararoy-2023\05. Code\observability-ecosystem>  c:; cd 'c:\swararoy\swararoy-2023\05. Code\observability-ecosystem'; & 'C:\swararoy\install_home\java11\bin\java.exe' '@C:\Users\SWARAJ~1\AppData\Local\Temp\cp_17foks3umv1p7q47rvh3xme3p.argfile' '-Dlogback.configurationFile=C:\\swararoy\\swararoy-2023\\logback.xml'  'org.ulearnuhelp.observability.App' 
+
+```
+Look into the log entry
+
+```
 {
   "timestamp" : "2023-01-02T17:44:03.337Z",
   "level" : "INFO",
@@ -147,5 +155,6 @@ PS C:\swararoy\swararoy-2023\05. Code\observability-ecosystem>  c:; cd 'c:\swara
   "message" : "This is an info level log message!",
   "context" : "default"
 }
+```
 
 
