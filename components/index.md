@@ -88,6 +88,64 @@ The following configuration logs to,
 
 ### JSON Output
 ---
-java -Dlogback.configurationFile=/path/to/config.xml <Your Main Class/ Exe. JAR>
-Or,
-System.setProperty("logback.configurationFile", "/path/to/config.xml");
+
+We need following additional dependencies in our pom file. 
+
+```
+
+<dependency>
+   <groupId>ch.qos.logback.contrib</groupId>
+   <artifactId>logback-json-classic</artifactId>
+   <version>0.1.5</version>
+</dependency>
+
+<dependency>
+    <groupId>ch.qos.logback.contrib</groupId>
+    <artifactId>logback-jackson</artifactId>
+    <version>0.1.5</version>
+    </dependency>
+
+<dependency>
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-databind</artifactId>
+    <version>2.14.1</version>
+</dependency>
+
+```
+
+Design the JSON log configuration file,
+
+```
+
+<configuration>
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+            <layout class="ch.qos.logback.contrib.json.classic.JsonLayout">
+                <timestampFormat>yyyy-MM-dd'T'HH:mm:ss.SSSX</timestampFormat>
+                <timestampFormatTimezoneId>Etc/UTC</timestampFormatTimezoneId>
+
+                <jsonFormatter class="ch.qos.logback.contrib.jackson.JacksonJsonFormatter">
+                    <prettyPrint>true</prettyPrint>
+                </jsonFormatter>
+            </layout>
+        </encoder>
+    </appender>
+
+    <root level="debug">
+        <appender-ref ref="stdout"/>
+    </root>
+</configuration>
+
+```
+
+PS C:\swararoy\swararoy-2023\05. Code\observability-ecosystem>  c:; cd 'c:\swararoy\swararoy-2023\05. Code\observability-ecosystem'; & 'C:\swararoy\install_home\java11\bin\java.exe' '@C:\Users\SWARAJ~1\AppData\Local\Temp\cp_17foks3umv1p7q47rvh3xme3p.argfile' '-Dlogback.configurationFile=C:\\swararoy\\swararoy-2023\\logback.xml'  'org.ulearnuhelp.observability.App'         
+{
+  "timestamp" : "2023-01-02T17:44:03.337Z",
+  "level" : "INFO",
+  "thread" : "main",
+  "logger" : "org.ulearnuhelp.observability.App",
+  "message" : "This is an info level log message!",
+  "context" : "default"
+}
+
+
